@@ -1,0 +1,22 @@
+image: java:11-jdk
+​
+​
+stages:
+  - test
+  - build
+​
+maven-test:
+  image: maven:3-jdk-11
+  stage: test
+  script: 'mvn test'
+    
+maven-build:
+  image: maven:3-jdk-11
+  stage: build
+  script: 'mvn package'
+​
+services:
+  - 'mongo:latest'
+​
+variables:
+  MONGO_URI: mongodb://localhost:27017/ibmnewsources
