@@ -24,60 +24,60 @@ import com.stackroute.newz.model.News;
 @Component
 public class LoggerAspect {
 
-	Logger newslogger=LoggerFactory.getLogger(LoggerAspect.class);
-	
-	@Before("execution (* com.stackroute.newz.controller.NewsController.addusernews(..))")
-	public void showdata(JoinPoint  jp)
-	{
-		newslogger.info("News Added to the list");
-	}
-	
-	
-	@Before("updatenewshandler()")
-	public void updatenews(JoinPoint jp)
-	{
-		newslogger.info("News will be updated");
-	}
-	@After("updatenewshandler()")
-	public void updatenewsA(JoinPoint jp)
-	{
-		newslogger.info("News found and News is updated");
-	}
-	
-	@Around("updatenewshandler()")
-	public Object aroundsaveuniverse(ProceedingJoinPoint proceedobj) throws Throwable
-	{
-		
-       ResponseEntity<?> obj=(ResponseEntity<?>) proceedobj.proceed();		
-     
-     	ResponseEntity<?> resentity=obj;
-     	try
-     	{
-    		News news=(News)resentity.getBody();
-    		newslogger.info("client updated news named " + news.getTitle() + " of id " + news.getNewsId() );
-     		
-     	}
-		catch(Exception e)
-     	{
-			newslogger.warn("Updated call is not success whil adding university. Excepiton raised" + e.getMessage());
-     	}
-     	
-     	return obj;
-		
-	}
-	
-	@AfterThrowing(pointcut="updatenewshandler()",throwing="exceptobj")
-	public void updateexceptionhandler(Exception exceptobj)
-	{
-		newslogger.warn("Exception raised while update" + exceptobj);
-	}
-	
-	
-	@Pointcut("execution (* com.stackroute.newz.controller.NewsController.updatenews(..))")
-	public void updatenewshandler()
-	{
-		
-	}
+//	Logger newslogger=LoggerFactory.getLogger(LoggerAspect.class);
+//	
+//	@Before("execution (* com.stackroute.newz.controller.NewsController.addusernews(..))")
+//	public void showdata(JoinPoint  jp)
+//	{
+//		newslogger.info("News Added to the list");
+//	}
+//	
+//	
+//	@Before("updatenewshandler()")
+//	public void updatenews(JoinPoint jp)
+//	{
+//		newslogger.info("News will be updated");
+//	}
+//	@After("updatenewshandler()")
+//	public void updatenewsA(JoinPoint jp)
+//	{
+//		newslogger.info("News found and News is updated");
+//	}
+//	
+//	@Around("updatenewshandler()")
+//	public Object aroundsaveuniverse(ProceedingJoinPoint proceedobj) throws Throwable
+//	{
+//		
+//       ResponseEntity<?> obj=(ResponseEntity<?>) proceedobj.proceed();		
+//     
+//     	ResponseEntity<?> resentity=obj;
+//     	try
+//     	{
+//    		News news=(News)resentity.getBody();
+//    		newslogger.info("client updated news named " + news.getTitle() + " of id " + news.getNewsId() );
+//     		
+//     	}
+//		catch(Exception e)
+//     	{
+//			newslogger.warn("Updated call is not success whil adding university. Excepiton raised" + e.getMessage());
+//     	}
+//     	
+//     	return obj;
+//		
+//	}
+//	
+//	@AfterThrowing(pointcut="updatenewshandler()",throwing="exceptobj")
+//	public void updateexceptionhandler(Exception exceptobj)
+//	{
+//		newslogger.warn("Exception raised while update" + exceptobj);
+//	}
+//	
+//	
+//	@Pointcut("execution (* com.stackroute.newz.controller.NewsController.updatenews(..))")
+//	public void updatenewshandler()
+//	{
+//		
+//	}
 	
 	/*
 	 * Write loggers for each of the methods of NewsController, any particular method

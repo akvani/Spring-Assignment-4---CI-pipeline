@@ -51,39 +51,25 @@ public class NewsServiceImpl implements NewsService {
 		{
 		 Optional<UserNews> userexist= newsrepo.findById(news.getNewssource().getNewsSourceCreatedBy());
 		 if(userexist.isPresent()) {
-			// System.out.println("user exists");
+			 System.out.println("user exists");
 		     UserNews usernewsexist = userexist.get();
 		     List<News> newsexist=usernewsexist.getNewslist();
-			   Iterator<News> iterator = newsexist.iterator();
-				while(iterator.hasNext())
-				 {
-					 News data = iterator.next();
-					 if(news.getNewsId() == data.getNewsId()) {
-						iterator.remove();
-						result=false;
-					 }
-					 else
-					 {
-						 result=true;
-					 }
-				    
-				 }
-				if(result)
-				{
-			         newsexist.add(news);
-			         usernewsexist.setNewslist(newsexist);
-			         newsrepo.save(usernewsexist);
-				}
-				
+		     newsexist.add(news);
+	         usernewsexist.setNewslist(newsexist);
+	         newsrepo.save(usernewsexist);
+	         result=true;		
 		}
 		else
 		{		
+			 System.out.println("New user created");
 			List<News> newslist = new ArrayList<>();
 			newslist.add(news);
 			UserNews usernews=new UserNews(news.getNewssource().getNewsSourceCreatedBy(),newslist);
 					
-			newsrepo.save(usernews);
+			//newsrepo.save(usernews);
+			
 			if(newsrepo.insert(usernews)!=null) {
+				 System.out.println("New user Inserted");
 			result=true;
 			}
 			//result=false;
@@ -279,3 +265,20 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 }
+
+// newsexist.add(news);
+	//		   Iterator<News> iterator = newsexist.iterator();
+//				while(iterator.hasNext())
+//				 {
+//					 News data = iterator.next();
+//					 if(news.getNewsId() == data.getNewsId()) {
+//						iterator.remove();
+//						result=false;
+//					 }
+//					 else
+//					 {
+//						 result=true;
+//					 }
+				    
+				// }	
+			       

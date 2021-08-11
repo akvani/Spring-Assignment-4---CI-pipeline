@@ -79,7 +79,7 @@ public ResponseEntity<?> addnews(@RequestBody NewsSource newssource)
 	 * 
 	 */
 @DeleteMapping("/newssource/{newssourceId}")
-public ResponseEntity<?> deletenewssource(@PathVariable("newsssourcId") Integer nId)
+public ResponseEntity<?> deletenewssource(@PathVariable("newssourceId") int nId)
 {
 	boolean bol=newssserv.deleteNewsSource(nId);
 	if (bol==true)
@@ -103,7 +103,7 @@ public ResponseEntity<?> deletenewssource(@PathVariable("newsssourcId") Integer 
 	 * 
 	 */
 @PutMapping("/newssource/{newssourceId}")
-public ResponseEntity<?> updateNewsource(@RequestBody NewsSource nsource, @PathVariable("neessourceId") Integer nId)
+public ResponseEntity<?> updateNewsource(@RequestBody NewsSource nsource, @PathVariable("newssourceId") int nId)
 {
 	String uId=nsource.getNewsSourceCreatedBy();
 	
@@ -133,7 +133,7 @@ public ResponseEntity<?> updateNewsource(@RequestBody NewsSource nsource, @PathV
 	 */
 
 @GetMapping("/newssource/{userId}/{newssourceId}")
-public ResponseEntity<?> updateNewsourcewithuserID(@PathVariable("userId") String uId, @PathVariable("neessourceId") Integer nId)
+public ResponseEntity<?> updateNewsourcewithuserID(@PathVariable("userId") String uId, @PathVariable("newssourceId") int nId)
 {
 	
 	try {

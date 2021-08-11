@@ -45,30 +45,27 @@ public class NewsSourceServiceImpl implements NewsSourceService {
 
 	@Override
 	public boolean addNewsSource(NewsSource newsSource) {
+		boolean result=false;
 		try {
 			Optional<NewsSource> nsource=newssrepo.findById(newsSource.getNewsSourceId());
 			 if (nsource.isPresent())
 			 {
-				 return false;
-			 }else {
-				 NewsSource Nnewsource=newsSource;
-				 newssrepo.save(Nnewsource);
-				 if(newssrepo.insert(Nnewsource)!=null) {
-					 return true;
-				 }else
-				 {
-					 return false;
+				 result=false;
+				
+			 } 
+			 else {
+				 //NewsSource Nnewsource=newsSource;
+				 newssrepo.save(newsSource);
+				 if(newssrepo.insert(newsSource)!=null) {
+					 result= true;
 				 }
 				
 			 }
 		}
-	catch(NoSuchElementException ne) {
-		throw new NoSuchElementException("News not found");
+	catch(Exception ne) {
+		return false;
 	}
-		
-		
-		
-		
+		return result;	
 	}
 
 	/* This method should be used to delete an existing newsSource. */
@@ -77,23 +74,23 @@ public class NewsSourceServiceImpl implements NewsSourceService {
 	public boolean deleteNewsSource(int newsSourceId) {
 		try {
 			Optional<NewsSource> optnews=newssrepo.findById(newsSourceId);
-			if (optnews==null) {
-				return false;
-				
-			}else {
+			
 			if (optnews.isPresent()) {
-				NewsSource newsource=optnews.get();
-				newssrepo.delete(newsource);
+			//	NewsSource newsource=optnews.get();
+				newssrepo.deleteById(newsSourceId);
 				return true;
+			}else {
+				return false;
 			}
-			}		
+				
 			
 			
-		}catch(NoSuchElementException ne) {
-			throw new NoSuchElementException("News not found");
+		}catch(Exception ne) {
+			//throw new NoSuchElementException("News not found");
+			return false;
 		}
 		
-		return false;
+		
 	}
 
 	/* This method should be used to update an existing newsSource. */

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 /*
  * Please note that this class is annotated with @Document annotation
  * @Document identifies a domain object to be persisted to MongoDB.
@@ -13,55 +15,59 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class NewsSource {
 	@Id
-	Integer NewsSourceId;
-	String NewsSourceName;
-	String NewsSourceDesc;
-	String NewsSourceCreatedBy;
-	LocalDateTime NewsSourceCreationDate;
+	int newsSourceId;
+	String newsSourceName;
+	String newsSourceDesc;
+	String newsSourceCreatedBy;
+	//NewsSourceCreatedBy
+	@JsonSerialize
+	LocalDateTime newsSourceCreationDate;
 	
 	
 	
-	public NewsSource(Integer NewsSourceId,String NewsSourceName,	String NewsSourceDesc,String NewsSourceCreatedBy,LocalDateTime NewsSourceCreationDate)
+	public NewsSource(int NewsSourceId,String NewsSourceName,	String NewsSourceDesc,String newsSourceCreatedBy,LocalDateTime NewsSourceCreationDate)
 	{
-		this.NewsSourceId=NewsSourceId;
-		this.NewsSourceName=NewsSourceName;
-		this.NewsSourceDesc=NewsSourceDesc;
-		this.NewsSourceCreatedBy=NewsSourceCreatedBy;
-		this.NewsSourceCreationDate=LocalDateTime.now();
+		this.newsSourceId=NewsSourceId;
+		this.newsSourceName=NewsSourceName;
+		this.newsSourceDesc=NewsSourceDesc;
+		this.newsSourceCreatedBy=newsSourceCreatedBy;
+		this.newsSourceCreationDate=LocalDateTime.now();
 	}
 	public NewsSource() {
 		
+		this.newsSourceCreationDate=LocalDateTime.now();
 	}
-	public Integer getNewsSourceId() {
-		return NewsSourceId;
+	public int getNewsSourceId() {
+		return newsSourceId;
 	}
-	public void setNewsSourceId(Integer newsSourceId) {
-		NewsSourceId = newsSourceId;
+	public void setNewsSourceId(int newsSourceId) {
+		this.newsSourceId = newsSourceId;
 	}
 	public String getNewsSourceName() {
-		return NewsSourceName;
+		return newsSourceName;
 	}
 	public void setNewsSourceName(String newsSourceName) {
-		NewsSourceName = newsSourceName;
+		this.newsSourceName = newsSourceName;
 	}
 	public String getNewsSourceDesc() {
-		return NewsSourceDesc;
+		return newsSourceDesc;
 	}
 	public void setNewsSourceDesc(String newsSourceDesc) {
-		NewsSourceDesc = newsSourceDesc;
+		this.newsSourceDesc = newsSourceDesc;
 	}
 	public String getNewsSourceCreatedBy() {
-		return NewsSourceCreatedBy;
+		return newsSourceCreatedBy;
 	}
 	public void setNewsSourceCreatedBy(String newsSourceCreatedBy) {
-		NewsSourceCreatedBy = newsSourceCreatedBy;
+		this.newsSourceCreatedBy = newsSourceCreatedBy;
 	}
 	public LocalDateTime getNewsSourceCreationDate() {
-		return NewsSourceCreationDate;
+		return newsSourceCreationDate;
 	}
-	public void setNewsSourceCreationDate( ) {
-		NewsSourceCreationDate = LocalDateTime.now();
+	public void setNewsSourceCreationDate() {
+		this.newsSourceCreationDate = LocalDateTime.now();
 	}
+	
 
 
 	/*

@@ -1,13 +1,6 @@
 spring:
  data:
    mongodb:
-    # username: ${MONGO_USER}
-     #password: ${MONGO_PASSWORD}
-    # database: ${MONGO_DATABASE}
-     #port: ${MONGO_PORT}
-     #host: ${MONGO_HOST}
-     database: NewsSourceService
-     port: 27017
-     host: localhost
+     uri: mongodb://localhost:27017/newssourceservice
 server:
  port: 8083

@@ -13,56 +13,57 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class NewsSource {
 	@Id
-	Integer NewsSourceId;
-	String NewsSourceName;
-	String NewsSourceDesc;
-	String NewsSourceCreatedBy; //user Id
-	LocalDateTime NewsSourceCreationDate;
+	Integer newsSourceId;
+	String newsSourceName;
+	String newsSourceDesc;
+	String newsSourceCreatedBy; //user Id
+	LocalDateTime newsSourceCreationDate;
 	
 	public NewsSource(int newssourceId,String newssourceName,	String newssourceDesc,	String newssourceCreatedBy,	LocalDateTime newssourceCreationDate)
 	{
-		this.NewsSourceId=newssourceId;
-		this.NewsSourceName=newssourceName;
-		this.NewsSourceDesc=newssourceDesc;
-		this.NewsSourceCreatedBy=newssourceCreatedBy;
-		this.NewsSourceCreationDate=LocalDateTime.now();
+		this.newsSourceId=newssourceId;
+		this.newsSourceName=newssourceName;
+		this.newsSourceDesc=newssourceDesc;
+		this.newsSourceCreatedBy=newssourceCreatedBy;
+		this.newsSourceCreationDate=LocalDateTime.now();
 		
 		
 	}
 	public NewsSource()
 	{
-		
+		this.newsSourceCreationDate=LocalDateTime.now();
 	}
 	public Integer getNewsSourceId() {
-		return NewsSourceId;
+		return newsSourceId;
 	}
 	public void setNewsSourceId(Integer newsSourceId) {
-		NewsSourceId = newsSourceId;
+		this.newsSourceId = newsSourceId;
 	}
 	public String getNewsSourceName() {
-		return NewsSourceName;
+		return newsSourceName;
 	}
 	public void setNewsSourceName(String newsSourceName) {
-		NewsSourceName = newsSourceName;
+		this.newsSourceName = newsSourceName;
 	}
 	public String getNewsSourceDesc() {
-		return NewsSourceDesc;
+		return newsSourceDesc;
 	}
 	public void setNewsSourceDesc(String newsSourceDesc) {
-		NewsSourceDesc = newsSourceDesc;
+		this.newsSourceDesc = newsSourceDesc;
 	}
 	public String getNewsSourceCreatedBy() {
-		return NewsSourceCreatedBy;
+		return newsSourceCreatedBy;
 	}
 	public void setNewsSourceCreatedBy(String newsSourceCreatedBy) {
-		NewsSourceCreatedBy = newsSourceCreatedBy;
+		this.newsSourceCreatedBy = newsSourceCreatedBy;
 	}
 	public LocalDateTime getNewsSourceCreationDate() {
-		return NewsSourceCreationDate;
+		return newsSourceCreationDate;
 	}
 	public void setNewsSourceCreationDate() {
-		NewsSourceCreationDate =LocalDateTime.now() ;
+		this.newsSourceCreationDate = LocalDateTime.now();
 	}
+	
 	
 
 	/*
